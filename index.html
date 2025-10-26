@@ -264,6 +264,231 @@
             font-size: 1.2em;
         }
 
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-lg);
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-image-container {
+            position: relative;
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(10px, 10px);
+            }
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .project-description {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tech-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition-smooth);
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tech-html {
+            background: linear-gradient(135deg, #e34c26, #f06529);
+            color: white;
+        }
+
+        .tech-css {
+            background: linear-gradient(135deg, #264de4, #2965f1);
+            color: white;
+        }
+
+        .tech-javascript {
+            background: linear-gradient(135deg, #f0db4f, #f7df1e);
+            color: #323330;
+        }
+
+        .tech-glassmorphism {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-responsive {
+            background: linear-gradient(135deg, #61dafb, #21a1c4);
+            color: white;
+        }
+
+        .tech-git {
+            background: linear-gradient(135deg, #f05032, #e84e31);
+            color: white;
+        }
+
+        .tech-python {
+            background: linear-gradient(135deg, #3776ab, #ffd343);
+            color: white;
+        }
+
+        .tech-streamlit {
+            background: linear-gradient(135deg, #ff4b4b, #ff6b6b);
+            color: white;
+        }
+
+        .tech-groq {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: white;
+        }
+
+        .tech-cloud {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+        }
+
+        .project-image-container-purple {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .project-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .project-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .project-btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+
+        .project-btn-primary:hover {
+            background: linear-gradient(135deg, #7c8ef0 0%, #8a5ab8 100%);
+        }
+
+        /* Responsive Projects */
+        @media (max-width: 768px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image-container {
+                min-height: 200px;
+            }
+        }
+
         /* Memory Game Styles */
         .game-intro {
             font-size: 1.1rem;
@@ -1753,6 +1978,79 @@
                 <div class="hobby-item">Reading tech books and fiction</div>
                 <div class="hobby-item">Playing strategy and indie games</div>
                 <div class="hobby-item">Listening to music and discovering new artists</div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-heading">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Personal Portfolio Website Project -->
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="img/profile.png" alt="Personal Portfolio Website Screenshot" class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Personal Portfolio Website</h3>
+                        <p class="project-description">
+                            A stunning interactive portfolio featuring glassmorphism design with a vibrant purple gradient theme.
+                            Showcases personal information, hobbies, and includes three custom-built browser games: Memory Match,
+                            Diamond Clicker, and Island Adventure with real-time gameplay and smooth animations.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge tech-html">HTML5</span>
+                            <span class="tech-badge tech-css">CSS3</span>
+                            <span class="tech-badge tech-javascript">JavaScript</span>
+                            <span class="tech-badge tech-glassmorphism">Glassmorphism</span>
+                            <span class="tech-badge tech-responsive">Responsive</span>
+                            <span class="tech-badge tech-git">Git</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/CodeCubCA/profile-website-Hello777E" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                                </svg>
+                                Repository
+                            </a>
+                            <a href="https://eric.codecub.org" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary">
+                                🚀 Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI ChatBox Project -->
+                <div class="project-card" style="margin-top: 2rem;">
+                    <div class="project-image-container project-image-container-purple">
+                        <img src="img/chatbox.png" alt="AI ChatBox Screenshot" class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" style="color: #a78bfa;">AI ChatBox</h3>
+                        <p class="project-description">
+                            An intelligent AI-powered chatbot built with Streamlit and Groq API. Features real-time conversation,
+                            context awareness, and deployed to the cloud with CI/CD. Perfect for students seeking instant help
+                            with homework, explanations, and learning support across various subjects.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge tech-python">Python</span>
+                            <span class="tech-badge tech-streamlit">Streamlit</span>
+                            <span class="tech-badge tech-groq">Groq API</span>
+                            <span class="tech-badge tech-git">Git</span>
+                            <span class="tech-badge tech-cloud">Streamlit Cloud</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/CodeCubCA/ai-chatbox-Hello777E" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                                </svg>
+                                Repository
+                            </a>
+                            <a href="https://ai-chatbox-eric-codecub.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">
+                                🤖 Try Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
