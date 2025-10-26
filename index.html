@@ -1,0 +1,3479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric - Portfolio</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --accent-color: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --success-color: #4caf50;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--primary-gradient);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+            text-align: center;
+            padding: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+            background: var(--glass-bg);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(20px) saturate(1.8);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        /* Header Styles */
+        .header {
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .header-content {
+            text-align: center;
+            flex: 1;
+        }
+
+        .games-menu-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .games-menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .games-menu-btn:hover::before {
+            left: 100%;
+        }
+
+        .games-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .games-menu-btn:active {
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 200;
+            margin-bottom: var(--spacing-md);
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-message {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: var(--spacing-xl) auto;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-heading {
+            font-size: 2.25rem;
+            font-weight: 200;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-info {
+            display: grid;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-info p {
+            font-size: 1.1rem;
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .info-label {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-right: var(--spacing-xs);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Hobbies Section */
+        .hobbies-list {
+            display: grid;
+            gap: var(--spacing-sm);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .hobby-item {
+            font-size: 1.1rem;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--accent-color);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .hobby-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .hobby-item::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: var(--spacing-sm);
+            font-size: 1.2em;
+        }
+
+        /* Memory Game Styles */
+        .game-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .game-btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .game-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .game-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .stat-label {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-board {
+            display: grid;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            margin: var(--spacing-lg) auto;
+            max-width: 450px;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .game-board.easy {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--transition-smooth);
+        }
+
+        .memory-card:hover:not(.flipped):not(.matched) {
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .memory-card:hover:not(.flipped):not(.matched)::before {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .memory-card.flipped {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .memory-card.flipped::before {
+            display: none;
+        }
+
+        .memory-card.matched {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: var(--success-color);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .memory-card.matched::before {
+            display: none;
+        }
+
+        .game-placeholder {
+            grid-column: 1 / -1;
+            padding: var(--spacing-xl);
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius-sm);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .placeholder-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.7;
+        }
+
+        .placeholder-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Games Menu Modal Styles */
+        .games-menu-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .games-menu-modal.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .games-menu-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            backdrop-filter: blur(30px) saturate(1.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .games-menu-modal.visible .games-menu-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .games-menu-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        .games-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .games-menu-title {
+            font-size: 2rem;
+            font-weight: 200;
+            color: var(--accent-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+        }
+
+        .game-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .game-card:active {
+            transform: translateY(-2px);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: var(--spacing-md);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .game-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Game Container Styles */
+        .game-container {
+            margin-top: var(--spacing-lg);
+        }
+
+        .game-back-btn-container {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .game-content {
+            text-align: center;
+        }
+
+        /* Modal Styles */
+        .game-complete-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .game-complete-modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            backdrop-filter: blur(30px) saturate(1.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: var(--spacing-md);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--accent-color);
+            font-weight: 200;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-stats {
+            margin-bottom: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .final-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+            padding: var(--spacing-xs) 0;
+        }
+
+        .final-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .final-label {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .final-value {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Footer Styles */
+        .footer {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .footer-emoji {
+            font-size: 1.2em;
+            margin-left: 0.5em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-sm);
+            }
+
+            .container {
+                padding: var(--spacing-lg);
+                margin: 0;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .games-menu-btn {
+                align-self: center;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .games-menu-content {
+                padding: var(--spacing-lg);
+                margin: var(--spacing-sm);
+            }
+
+            .games-menu-title {
+                font-size: 1.6rem;
+            }
+
+            h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+                letter-spacing: 2px;
+            }
+
+            .welcome-message {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: var(--spacing-md);
+                margin: var(--spacing-lg) 0;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .about-info,
+            .hobbies-list {
+                max-width: 100%;
+            }
+
+            .game-controls {
+                gap: var(--spacing-sm);
+            }
+
+            .game-btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+
+            .game-stats {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: var(--spacing-sm);
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+
+            .game-board {
+                max-width: 320px;
+                padding: var(--spacing-sm);
+                gap: 6px;
+            }
+
+            .memory-card {
+                font-size: 1.4rem;
+            }
+
+            .modal-content {
+                padding: var(--spacing-lg);
+                margin: var(--spacing-sm);
+            }
+
+            .modal-title {
+                font-size: 1.6rem;
+            }
+
+            .modal-icon {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--spacing-md);
+            }
+
+            .header-top {
+                gap: var(--spacing-sm);
+            }
+
+            .games-menu-btn {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                font-size: 0.9rem;
+            }
+
+            .games-menu-content {
+                padding: var(--spacing-md);
+            }
+
+            .game-card {
+                padding: var(--spacing-md);
+            }
+
+            .game-icon {
+                font-size: 2.5rem;
+            }
+
+            .game-name {
+                font-size: 1.1rem;
+            }
+
+            .game-board {
+                max-width: 280px;
+            }
+
+            .memory-card {
+                font-size: 1.2rem;
+            }
+
+            .game-stats {
+                grid-template-columns: 1fr;
+                max-width: 200px;
+            }
+
+            .hobby-item,
+            .about-info p {
+                font-size: 1rem;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+        }
+
+        /* Diamond Clicker Game Styles */
+        .clicker-game {
+            text-align: center;
+        }
+
+        .diamond-counter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .diamond-stat {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .diamond-stat-label {
+            color: #00bfff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .diamond-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .diamond-clicker {
+            margin: var(--spacing-xl) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .diamond-button {
+            font-size: 8rem;
+            background: linear-gradient(135deg, #00bfff, #1e90ff, #87ceeb);
+            border: none;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 32px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diamond-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            transform: rotate(45deg);
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .diamond-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 48px rgba(0, 191, 255, 0.4);
+        }
+
+        .diamond-button:hover::before {
+            opacity: 1;
+            animation: shine 0.8s ease-in-out;
+        }
+
+        .diamond-button:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes diamondPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes clickParticle {
+            0% {
+                opacity: 1;
+                transform: scale(0) translateY(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2) translateY(-20px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-40px);
+            }
+        }
+
+        .click-particle {
+            position: absolute;
+            pointer-events: none;
+            color: #00bfff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            animation: clickParticle 1s ease-out forwards;
+            z-index: 1000;
+        }
+
+        .diamond-button.clicked {
+            animation: diamondPop 0.3s ease-out;
+        }
+
+        .upgrades-shop {
+            margin-top: var(--spacing-xl);
+        }
+
+        .shop-title {
+            font-size: 2rem;
+            color: #00bfff;
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 200;
+        }
+
+        .upgrades-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            max-width: 800px;
+            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .upgrade-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            backdrop-filter: blur(8px);
+            transition: var(--transition-smooth);
+            text-align: left;
+            position: relative;
+        }
+
+        .upgrade-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.3), transparent);
+            border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+        }
+
+        .upgrade-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 191, 255, 0.2);
+        }
+
+        .upgrade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .upgrade-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .upgrade-icon {
+            font-size: 1.8rem;
+        }
+
+        .upgrade-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .upgrade-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .upgrade-cost {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00bfff;
+        }
+
+        .upgrade-btn {
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: linear-gradient(135deg, #00bfff, #1e90ff);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upgrade-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .upgrade-btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .upgrade-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #1e90ff, #00bfff);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+        }
+
+        .upgrade-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .upgrade-btn:disabled::before {
+            display: none;
+        }
+
+        .game-controls-clicker {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .reset-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: rgba(220, 53, 69, 0.8);
+            border: 1px solid rgba(220, 53, 69, 0.5);
+            border-radius: var(--border-radius-sm);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .reset-btn:hover {
+            background: rgba(220, 53, 69, 1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        /* Enhanced animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gameCardPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .game-card:hover {
+            animation: gameCardPulse 0.6s ease-in-out;
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Mobile Responsive for Diamond Clicker */
+        @media (max-width: 768px) {
+            .diamond-button {
+                font-size: 6rem;
+                width: 140px;
+                height: 140px;
+            }
+
+            .upgrades-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .upgrade-card {
+                padding: var(--spacing-sm);
+            }
+
+            .diamond-counter {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .diamond-button {
+                font-size: 5rem;
+                width: 120px;
+                height: 120px;
+            }
+
+            .shop-title {
+                font-size: 1.6rem;
+            }
+
+            .upgrade-name {
+                font-size: 1.1rem;
+            }
+
+            .upgrade-footer {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+                align-items: stretch;
+            }
+        }
+
+        /* Island Adventure Game Styles */
+        .island-adventure-game {
+            text-align: center;
+            position: relative;
+        }
+
+        .adventure-game-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .adventure-hud {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.08);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .adventure-stat {
+            background: rgba(255, 255, 255, 0.08);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .adventure-stat-label {
+            color: #20b2aa;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .adventure-stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .health-bar {
+            background: rgba(220, 53, 69, 0.3);
+            border: 2px solid rgba(220, 53, 69, 0.6);
+            border-radius: var(--border-radius-sm);
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+        }
+
+        .health-fill {
+            background: linear-gradient(90deg, #dc3545, #ff4757, #dc3545);
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: var(--border-radius-sm);
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .health-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            letter-spacing: 0.5px;
+        }
+
+        .adventure-canvas-container {
+            position: relative;
+            background: linear-gradient(180deg, #87ceeb 0%, #4682b4 50%, #191970 100%);
+            border-radius: var(--border-radius-md);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .adventure-canvas {
+            display: block;
+            width: 100%;
+            height: 500px;
+            cursor: crosshair;
+        }
+
+        .adventure-canvas.boat-mode {
+            cursor: move;
+        }
+
+        .adventure-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .adventure-controls-left {
+            display: flex;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+
+        .adventure-controls-center {
+            display: flex;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+
+        .adventure-controls-right {
+            display: flex;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+
+        .adventure-btn {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: rgba(32, 178, 170, 0.8);
+            border: 1px solid rgba(32, 178, 170, 0.5);
+            border-radius: var(--border-radius-sm);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-width: 100px;
+            max-width: 140px;
+            text-align: center;
+        }
+
+        .adventure-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .adventure-btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .adventure-btn:hover:not(:disabled) {
+            background: rgba(32, 178, 170, 1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.3);
+        }
+
+        .adventure-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .adventure-btn:disabled::before {
+            display: none;
+        }
+
+        .adventure-btn.danger {
+            background: rgba(220, 53, 69, 0.8);
+            border-color: rgba(220, 53, 69, 0.5);
+        }
+
+        .adventure-btn.danger:hover:not(:disabled) {
+            background: rgba(220, 53, 69, 1);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        .minimap-container {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-sm);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .minimap {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .game-mode-indicator {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-primary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .adventure-instructions {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .instructions-title {
+            color: #20b2aa;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .instructions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .instruction-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid #20b2aa;
+        }
+
+        .instruction-key {
+            color: #20b2aa;
+            font-weight: 600;
+            margin-right: var(--spacing-xs);
+        }
+
+        /* Touch controls for mobile */
+        .touch-controls {
+            display: none;
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            right: var(--spacing-md);
+            z-index: 15;
+        }
+
+        .touch-joystick {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .joystick-knob {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            transition: transform 0.1s ease;
+        }
+
+        .touch-action-buttons {
+            position: absolute;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .touch-action-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(32, 178, 170, 0.8);
+            border: 2px solid rgba(32, 178, 170, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .touch-action-btn:active {
+            transform: scale(0.9);
+            background: rgba(32, 178, 170, 1);
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .adventure-canvas {
+                height: 400px;
+            }
+
+            .adventure-controls {
+                gap: var(--spacing-xs);
+                padding: var(--spacing-xs);
+            }
+
+            .adventure-controls-left,
+            .adventure-controls-center,
+            .adventure-controls-right {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: var(--spacing-xs);
+            }
+
+            .adventure-btn {
+                min-width: 90px;
+                max-width: 120px;
+                font-size: 0.75rem;
+                padding: 6px 8px;
+            }
+
+            .minimap-container {
+                width: 120px;
+                height: 120px;
+                top: var(--spacing-sm);
+                right: var(--spacing-sm);
+            }
+
+            .touch-controls {
+                display: block;
+            }
+
+            .instructions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .adventure-canvas {
+                height: 300px;
+            }
+
+            .adventure-hud {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+                padding: var(--spacing-sm);
+            }
+
+            .adventure-btn {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                font-size: 0.8rem;
+            }
+
+            .minimap-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .touch-joystick {
+                width: 80px;
+                height: 80px;
+            }
+
+            .joystick-knob {
+                width: 30px;
+                height: 30px;
+            }
+
+            .touch-action-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animation keyframes for island adventure */
+        @keyframes swordSwing {
+            0% { transform: rotate(-45deg); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(-45deg); }
+        }
+
+        @keyframes zombieHit {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes damageFlash {
+            0% { background-color: transparent; }
+            50% { background-color: rgba(255, 0, 0, 0.3); }
+            100% { background-color: transparent; }
+        }
+
+        .sword-swing {
+            animation: swordSwing 0.3s ease-in-out;
+        }
+
+        .zombie-hit {
+            animation: zombieHit 0.3s ease-in-out;
+        }
+
+        .damage-flash {
+            animation: damageFlash 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div></div> <!-- Spacer for centering -->
+                <div class="header-content">
+                    <h1>Eric</h1>
+                </div>
+                <button id="games-menu-btn" class="games-menu-btn">
+                    <span>🎮</span>
+                    <span>Games</span>
+                </button>
+            </div>
+            <div class="divider"></div>
+            <p class="welcome-message">Welcome to my coding portfolio!</p>
+        </header>
+
+        <!-- About Me Section -->
+        <section class="section">
+            <h2 class="section-heading">About Me</h2>
+            <div class="about-info">
+                <p><span class="info-label">Age:</span>13 years old</p>
+                <p><span class="info-label">School:</span>the best school in the world</p>
+            </div>
+            <p class="about-description">I'm passionate about coding and love creating interactive experiences. I enjoy problem-solving and building things that bring joy to others.</p>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section class="section">
+            <h2 class="section-heading">My Hobbies</h2>
+            <div class="hobbies-list">
+                <div class="hobby-item">Coding and building apps</div>
+                <div class="hobby-item">Reading tech books and fiction</div>
+                <div class="hobby-item">Playing strategy and indie games</div>
+                <div class="hobby-item">Listening to music and discovering new artists</div>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Thanks for visiting my portfolio!<span class="footer-emoji">🌟</span></p>
+                <p>Made with passion for coding and creativity.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Games Menu Modal -->
+    <div id="games-menu-modal" class="games-menu-modal">
+        <div class="games-menu-content">
+            <div class="games-menu-header">
+                <h3 class="games-menu-title">🎮 Games Menu</h3>
+                <button id="close-games-menu" class="close-btn">&times;</button>
+            </div>
+            <div class="games-grid">
+                <div class="game-card" data-game="memory-game">
+                    <span class="game-icon">🧠</span>
+                    <h4 class="game-name">Memory Match Game</h4>
+                    <p class="game-description">Test your memory skills by finding matching pairs of cards. Challenge yourself with this classic brain training game!</p>
+                </div>
+                <div class="game-card" data-game="diamond-clicker">
+                    <span class="game-icon">💎</span>
+                    <h4 class="game-name">Diamond Clicker Game</h4>
+                    <p class="game-description">Click diamonds to collect gems and unlock powerful upgrades. Build your mining empire in this addictive clicker game!</p>
+                </div>
+                <div class="game-card" data-game="island-adventure">
+                    <span class="game-icon">🏝️</span>
+                    <h4 class="game-name">Island Adventure</h4>
+                    <p class="game-description">Sail the high seas, explore mysterious islands, and fight zombies with your sword in this 3D-style adventure game!</p>
+                </div>
+            </div>
+
+            <!-- Game Container - Hidden by default -->
+            <div id="game-container" class="game-container" style="display: none;">
+                <div class="game-back-btn-container">
+                    <button id="back-to-menu" class="game-btn">← Back to Games Menu</button>
+                </div>
+
+                <!-- Memory Match Game -->
+                <div id="memory-game-content" class="game-content" style="display: none;">
+                    <h2 class="section-heading">Memory Match Game</h2>
+                    <p class="game-intro">Test your memory! Click cards to find matching pairs.</p>
+
+                    <div class="game-controls">
+                        <button id="start-btn" class="game-btn">Start Game</button>
+                        <button id="restart-btn" class="game-btn" disabled>Restart</button>
+                    </div>
+
+                    <div class="game-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Moves</span>
+                            <span id="moves-count" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Matches</span>
+                            <span id="matches-count" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Time</span>
+                            <span id="timer" class="stat-value">00:00</span>
+                        </div>
+                    </div>
+
+                    <div id="game-board" class="game-board">
+                        <div class="game-placeholder">
+                            <span class="placeholder-icon">🎮</span>
+                            <p class="placeholder-text">Click "Start Game" to begin!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diamond Clicker Game -->
+                <div id="diamond-clicker-content" class="game-content clicker-game" style="display: none;">
+                    <h2 class="section-heading">Diamond Clicker Game</h2>
+                    <p class="game-intro">Click the diamond to collect gems and unlock powerful upgrades!</p>
+
+                    <div class="diamond-counter">
+                        <div class="diamond-stat">
+                            <span class="diamond-stat-label">Total Diamonds</span>
+                            <span id="diamond-count" class="diamond-stat-value">0</span>
+                        </div>
+                        <div class="diamond-stat">
+                            <span class="diamond-stat-label">Per Click</span>
+                            <span id="diamonds-per-click" class="diamond-stat-value">1</span>
+                        </div>
+                    </div>
+
+                    <div class="diamond-clicker">
+                        <button id="diamond-button" class="diamond-button">💎</button>
+                    </div>
+
+                    <div class="upgrades-shop">
+                        <h3 class="shop-title">Upgrade Shop</h3>
+                        <div id="upgrades-grid" class="upgrades-grid">
+                            <!-- Upgrades will be generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="game-controls-clicker">
+                        <button id="reset-game-btn" class="reset-btn">Reset Progress</button>
+                    </div>
+                </div>
+
+                <!-- Island Adventure Game -->
+                <div id="island-adventure-content" class="game-content island-adventure-game" style="display: none;">
+                    <div class="adventure-game-container">
+                        <h2 class="section-heading">Island Adventure</h2>
+                        <p class="game-intro">Sail the high seas, explore mysterious islands, and fight zombies with your sword!</p>
+
+                        <!-- Game Instructions -->
+                        <div class="adventure-instructions">
+                            <div class="instructions-title">🎮 Game Controls</div>
+                            <div class="instructions-grid">
+                                <div class="instruction-item">
+                                    <span class="instruction-key">WASD/Arrows:</span>
+                                    Move boat or player
+                                </div>
+                                <div class="instruction-item">
+                                    <span class="instruction-key">Space/Click:</span>
+                                    Attack with sword
+                                </div>
+                                <div class="instruction-item">
+                                    <span class="instruction-key">Dock:</span>
+                                    Get close to islands
+                                </div>
+                                <div class="instruction-item">
+                                    <span class="instruction-key">Explore:</span>
+                                    Find and fight zombies
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game HUD -->
+                        <div class="adventure-hud">
+                            <div class="adventure-stat">
+                                <span class="adventure-stat-label">Health</span>
+                                <div class="health-bar">
+                                    <div id="health-fill" class="health-fill" style="width: 100%;"></div>
+                                    <div id="health-text" class="health-text">100/100</div>
+                                </div>
+                            </div>
+                            <div class="adventure-stat">
+                                <span class="adventure-stat-label">Score</span>
+                                <span id="adventure-score" class="adventure-stat-value">0</span>
+                            </div>
+                            <div class="adventure-stat">
+                                <span class="adventure-stat-label">Zombies Killed</span>
+                                <span id="zombies-killed" class="adventure-stat-value">0</span>
+                            </div>
+                            <div class="adventure-stat">
+                                <span class="adventure-stat-label">Islands Found</span>
+                                <span id="islands-explored" class="adventure-stat-value">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Game Canvas Container -->
+                        <div class="adventure-canvas-container">
+                            <canvas id="adventure-canvas" class="adventure-canvas boat-mode" width="800" height="500"></canvas>
+
+                            <!-- Game Mode Indicator -->
+                            <div id="game-mode-indicator" class="game-mode-indicator">⛵ Sailing Mode</div>
+
+                            <!-- Minimap -->
+                            <div class="minimap-container">
+                                <canvas id="minimap-canvas" class="minimap" width="150" height="150"></canvas>
+                            </div>
+
+                            <!-- Touch Controls for Mobile -->
+                            <div class="touch-controls">
+                                <div class="touch-joystick" id="touch-joystick">
+                                    <div class="joystick-knob" id="joystick-knob"></div>
+                                </div>
+                                <div class="touch-action-buttons">
+                                    <div class="touch-action-btn" id="touch-attack-btn">⚔️</div>
+                                    <div class="touch-action-btn" id="touch-dock-btn">🏝️</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Controls -->
+                        <div class="adventure-controls">
+                            <div class="adventure-controls-left">
+                                <button id="new-adventure-btn" class="adventure-btn">🌊 New Adventure</button>
+                                <button id="pause-adventure-btn" class="adventure-btn">⏸️ Pause</button>
+                            </div>
+                            <div class="adventure-controls-center">
+                                <button id="dock-undock-btn" class="adventure-btn" disabled>🏝️ Dock at Island</button>
+                            </div>
+                            <div class="adventure-controls-right">
+                                <button id="help-adventure-btn" class="adventure-btn">❓ Help</button>
+                                <button id="reset-adventure-btn" class="adventure-btn danger">🔄 Reset Game</button>
+                            </div>
+                        </div>
+
+                        <!-- Game Status -->
+                        <div id="game-status" class="adventure-instructions" style="display: none;">
+                            <div class="instructions-title">📍 Current Status</div>
+                            <div id="status-message" class="instruction-item">
+                                Ready to start your adventure! Click "New Adventure" to begin sailing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Complete Modal -->
+    <div id="game-complete-modal" class="game-complete-modal hidden">
+        <div class="modal-content">
+            <span class="modal-icon">🎉</span>
+            <h3 class="modal-title">Congratulations!</h3>
+            <div class="final-stats">
+                <div class="final-stat">
+                    <span class="final-label">Total Moves:</span>
+                    <span id="final-moves" class="final-value">0</span>
+                </div>
+                <div class="final-stat">
+                    <span class="final-label">Time Taken:</span>
+                    <span id="final-time" class="final-value">00:00</span>
+                </div>
+            </div>
+            <button id="play-again-btn" class="game-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Games Menu Functionality
+        class GamesMenu {
+            constructor() {
+                this.modal = document.getElementById('games-menu-modal');
+                this.openBtn = document.getElementById('games-menu-btn');
+                this.closeBtn = document.getElementById('close-games-menu');
+                this.gameCards = document.querySelectorAll('.game-card');
+                this.gameContainer = document.getElementById('game-container');
+                this.gamesGrid = document.querySelector('.games-grid');
+                this.backBtn = document.getElementById('back-to-menu');
+
+                this.init();
+            }
+
+            init() {
+                // Open modal
+                this.openBtn.addEventListener('click', () => this.openModal());
+
+                // Close modal
+                this.closeBtn.addEventListener('click', () => this.closeModal());
+
+                // Back to menu
+                this.backBtn.addEventListener('click', () => this.backToMenu());
+
+                // Close on backdrop click
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) {
+                        this.closeModal();
+                    }
+                });
+
+                // Close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.modal.classList.contains('visible')) {
+                        if (this.gameContainer.style.display === 'block') {
+                            this.backToMenu();
+                        } else {
+                            this.closeModal();
+                        }
+                    }
+                });
+
+                // Game card clicks
+                this.gameCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const gameId = card.dataset.game;
+                        this.navigateToGame(gameId);
+                    });
+                });
+            }
+
+            openModal() {
+                this.modal.classList.add('visible');
+                document.body.style.overflow = 'hidden';
+                this.backToMenu(); // Ensure we start at the menu
+            }
+
+            closeModal() {
+                this.modal.classList.remove('visible');
+                document.body.style.overflow = '';
+                this.backToMenu(); // Reset to menu when closing
+            }
+
+            backToMenu() {
+                this.gamesGrid.style.display = 'grid';
+                this.gameContainer.style.display = 'none';
+                // Hide all game content
+                document.getElementById('memory-game-content').style.display = 'none';
+                document.getElementById('diamond-clicker-content').style.display = 'none';
+                document.getElementById('island-adventure-content').style.display = 'none';
+            }
+
+            navigateToGame(gameId) {
+                // Hide games grid and show game container
+                this.gamesGrid.style.display = 'none';
+                this.gameContainer.style.display = 'block';
+
+                // Hide all game content first
+                document.getElementById('memory-game-content').style.display = 'none';
+                document.getElementById('diamond-clicker-content').style.display = 'none';
+                document.getElementById('island-adventure-content').style.display = 'none';
+
+                // Show selected game
+                if (gameId === 'memory-game') {
+                    document.getElementById('memory-game-content').style.display = 'block';
+                } else if (gameId === 'diamond-clicker') {
+                    document.getElementById('diamond-clicker-content').style.display = 'block';
+                } else if (gameId === 'island-adventure') {
+                    document.getElementById('island-adventure-content').style.display = 'block';
+                }
+            }
+        }
+
+        class MemoryMatchGame {
+            constructor() {
+                this.gameBoard = document.getElementById('game-board');
+                this.startBtn = document.getElementById('start-btn');
+                this.restartBtn = document.getElementById('restart-btn');
+                this.playAgainBtn = document.getElementById('play-again-btn');
+                this.modal = document.getElementById('game-complete-modal');
+
+                // Game state
+                this.isGameActive = false;
+                this.flippedCards = [];
+                this.matchedPairs = 0;
+                this.moves = 0;
+                this.startTime = null;
+                this.gameTimer = null;
+
+                // Simple 4x3 grid (6 pairs)
+                this.symbols = ['🌟', '🎈', '🎯', '🎨', '🌈', '🎪'];
+                this.cards = [];
+
+                this.init();
+            }
+
+            init() {
+                this.startBtn.addEventListener('click', () => this.startGame());
+                this.restartBtn.addEventListener('click', () => this.restartGame());
+                this.playAgainBtn.addEventListener('click', () => this.playAgain());
+            }
+
+            startGame() {
+                this.isGameActive = true;
+                this.flippedCards = [];
+                this.matchedPairs = 0;
+                this.moves = 0;
+                this.startTime = Date.now();
+
+                this.startBtn.disabled = true;
+                this.restartBtn.disabled = false;
+
+                this.createBoard();
+                this.startTimer();
+                this.updateStats();
+            }
+
+            createBoard() {
+                // Create pairs of symbols
+                this.cards = [...this.symbols, ...this.symbols];
+                this.shuffleArray(this.cards);
+
+                this.gameBoard.innerHTML = '';
+                this.gameBoard.className = 'game-board easy';
+
+                this.cards.forEach((symbol, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'memory-card';
+                    card.dataset.symbol = symbol;
+                    card.dataset.index = index;
+                    card.addEventListener('click', () => this.flipCard(card));
+                    this.gameBoard.appendChild(card);
+                });
+            }
+
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            flipCard(card) {
+                if (!this.isGameActive || card.classList.contains('flipped') ||
+                    card.classList.contains('matched') || this.flippedCards.length >= 2) {
+                    return;
+                }
+
+                card.classList.add('flipped');
+                card.textContent = card.dataset.symbol;
+                this.flippedCards.push(card);
+
+                if (this.flippedCards.length === 2) {
+                    this.moves++;
+                    this.updateStats();
+                    this.checkMatch();
+                }
+            }
+
+            checkMatch() {
+                const [card1, card2] = this.flippedCards;
+
+                setTimeout(() => {
+                    if (card1.dataset.symbol === card2.dataset.symbol) {
+                        card1.classList.add('matched');
+                        card2.classList.add('matched');
+                        this.matchedPairs++;
+
+                        if (this.matchedPairs === this.symbols.length) {
+                            this.endGame();
+                        }
+                    } else {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                        card1.textContent = '';
+                        card2.textContent = '';
+                    }
+
+                    this.flippedCards = [];
+                    this.updateStats();
+                }, 1000);
+            }
+
+            startTimer() {
+                this.gameTimer = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+                    const minutes = Math.floor(elapsed / 60);
+                    const seconds = elapsed % 60;
+                    document.getElementById('timer').textContent =
+                        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+
+            updateStats() {
+                document.getElementById('moves-count').textContent = this.moves;
+                document.getElementById('matches-count').textContent = this.matchedPairs;
+            }
+
+            endGame() {
+                this.isGameActive = false;
+                clearInterval(this.gameTimer);
+
+                const finalTime = document.getElementById('timer').textContent;
+                document.getElementById('final-moves').textContent = this.moves;
+                document.getElementById('final-time').textContent = finalTime;
+
+                this.modal.classList.remove('hidden');
+            }
+
+            restartGame() {
+                this.resetGame();
+                this.startGame();
+            }
+
+            playAgain() {
+                this.modal.classList.add('hidden');
+                this.resetGame();
+            }
+
+            resetGame() {
+                this.isGameActive = false;
+                clearInterval(this.gameTimer);
+
+                this.startBtn.disabled = false;
+                this.restartBtn.disabled = true;
+
+                this.gameBoard.innerHTML = `
+                    <div class="game-placeholder">
+                        <span class="placeholder-icon">🎮</span>
+                        <p class="placeholder-text">Click "Start Game" to begin!</p>
+                    </div>
+                `;
+
+                document.getElementById('moves-count').textContent = '0';
+                document.getElementById('matches-count').textContent = '0';
+                document.getElementById('timer').textContent = '00:00';
+            }
+        }
+
+        // Initialize all components when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new GamesMenu();
+            new MemoryMatchGame();
+            new DiamondClickerGame();
+            new IslandAdventureGame();
+        });
+
+        // Diamond Clicker Game Class
+        class DiamondClickerGame {
+            constructor() {
+                this.diamonds = 0;
+                this.diamondsPerClick = 1;
+                this.upgrades = [
+                    {
+                        id: 'better-pick',
+                        name: 'Better Pick',
+                        description: 'A sharper pickaxe increases your mining efficiency',
+                        icon: '⛏️',
+                        baseCost: 25,
+                        cost: 25,
+                        boost: 1,
+                        owned: 0
+                    },
+                    {
+                        id: 'diamond-drill',
+                        name: 'Diamond Drill',
+                        description: 'Industrial drilling equipment for faster extraction',
+                        icon: '🔧',
+                        baseCost: 150,
+                        cost: 150,
+                        boost: 2,
+                        owned: 0
+                    },
+                    {
+                        id: 'mining-robot',
+                        name: 'Mining Robot',
+                        description: 'Automated mining bot that works alongside you',
+                        icon: '🤖',
+                        baseCost: 750,
+                        cost: 750,
+                        boost: 5,
+                        owned: 0
+                    },
+                    {
+                        id: 'diamond-factory',
+                        name: 'Diamond Factory',
+                        description: 'Mass production facility for synthetic diamonds',
+                        icon: '🏭',
+                        baseCost: 5000,
+                        cost: 5000,
+                        boost: 10,
+                        owned: 0
+                    },
+                    {
+                        id: 'quantum-miner',
+                        name: 'Quantum Miner',
+                        description: 'Quantum technology extracts diamonds from alternate dimensions',
+                        icon: '⚡',
+                        baseCost: 25000,
+                        cost: 25000,
+                        boost: 25,
+                        owned: 0
+                    }
+                ];
+
+                this.elements = {
+                    diamondButton: document.getElementById('diamond-button'),
+                    diamondCount: document.getElementById('diamond-count'),
+                    diamondsPerClick: document.getElementById('diamonds-per-click'),
+                    upgradesGrid: document.getElementById('upgrades-grid'),
+                    resetBtn: document.getElementById('reset-game-btn')
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.loadGame();
+                this.setupEventListeners();
+                this.renderUpgrades();
+                this.updateDisplay();
+            }
+
+            setupEventListeners() {
+                this.elements.diamondButton.addEventListener('click', (e) => this.clickDiamond(e));
+                this.elements.resetBtn.addEventListener('click', () => this.resetGame());
+
+                // Auto-save every 5 seconds
+                setInterval(() => this.saveGame(), 5000);
+            }
+
+            clickDiamond(event) {
+                this.diamonds += this.diamondsPerClick;
+
+                // Add click animation
+                this.elements.diamondButton.classList.add('clicked');
+                setTimeout(() => {
+                    this.elements.diamondButton.classList.remove('clicked');
+                }, 300);
+
+                // Create floating particle effect
+                this.createClickParticle(event);
+
+                this.updateDisplay();
+                this.updateUpgradeButtons();
+                this.saveGame();
+            }
+
+            createClickParticle(event) {
+                const particle = document.createElement('div');
+                particle.className = 'click-particle';
+                particle.textContent = `+${this.diamondsPerClick}`;
+
+                const rect = this.elements.diamondButton.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                particle.style.position = 'absolute';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.pointerEvents = 'none';
+
+                this.elements.diamondButton.style.position = 'relative';
+                this.elements.diamondButton.appendChild(particle);
+
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 1000);
+            }
+
+            buyUpgrade(upgradeId) {
+                const upgrade = this.upgrades.find(u => u.id === upgradeId);
+                if (!upgrade || this.diamonds < upgrade.cost) return;
+
+                this.diamonds -= upgrade.cost;
+                upgrade.owned++;
+                this.diamondsPerClick += upgrade.boost;
+
+                // Increase cost by 1.5x
+                upgrade.cost = Math.floor(upgrade.baseCost * Math.pow(1.5, upgrade.owned));
+
+                this.updateDisplay();
+                this.updateUpgradeButtons();
+                this.renderUpgrades();
+                this.saveGame();
+            }
+
+            renderUpgrades() {
+                this.elements.upgradesGrid.innerHTML = '';
+
+                this.upgrades.forEach(upgrade => {
+                    const card = document.createElement('div');
+                    card.className = 'upgrade-card';
+
+                    const canAfford = this.diamonds >= upgrade.cost;
+                    const buttonClass = canAfford ? 'upgrade-btn' : 'upgrade-btn';
+                    const buttonDisabled = canAfford ? '' : 'disabled';
+
+                    card.innerHTML = `
+                        <div class="upgrade-header">
+                            <span class="upgrade-name">${upgrade.name}</span>
+                            <span class="upgrade-icon">${upgrade.icon}</span>
+                        </div>
+                        <div class="upgrade-description">${upgrade.description}</div>
+                        <div class="upgrade-footer">
+                            <span class="upgrade-cost">${this.formatNumber(upgrade.cost)} 💎</span>
+                            <button class="${buttonClass}" data-upgrade="${upgrade.id}" ${buttonDisabled}>
+                                Buy ${upgrade.owned > 0 ? `(${upgrade.owned})` : ''}
+                            </button>
+                        </div>
+                    `;
+
+                    const button = card.querySelector('.upgrade-btn');
+                    button.disabled = !canAfford;
+                    button.addEventListener('click', () => this.buyUpgrade(upgrade.id));
+
+                    this.elements.upgradesGrid.appendChild(card);
+                });
+            }
+
+            updateUpgradeButtons() {
+                this.upgrades.forEach(upgrade => {
+                    const button = document.querySelector(`[data-upgrade="${upgrade.id}"]`);
+                    if (button) {
+                        const canAfford = this.diamonds >= upgrade.cost;
+                        button.disabled = !canAfford;
+
+                        // Update cost display
+                        const costElement = button.parentElement.querySelector('.upgrade-cost');
+                        if (costElement) {
+                            costElement.textContent = `${this.formatNumber(upgrade.cost)} 💎`;
+                        }
+                    }
+                });
+            }
+
+            updateDisplay() {
+                this.elements.diamondCount.textContent = this.formatNumber(this.diamonds);
+                this.elements.diamondsPerClick.textContent = this.formatNumber(this.diamondsPerClick);
+            }
+
+            formatNumber(num) {
+                if (num < 1000) return num.toString();
+                if (num < 1000000) return (num / 1000).toFixed(1) + 'K';
+                if (num < 1000000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num < 1000000000000) return (num / 1000000000).toFixed(1) + 'B';
+                return (num / 1000000000000).toFixed(1) + 'T';
+            }
+
+            saveGame() {
+                const gameData = {
+                    diamonds: this.diamonds,
+                    diamondsPerClick: this.diamondsPerClick,
+                    upgrades: this.upgrades.map(u => ({
+                        id: u.id,
+                        cost: u.cost,
+                        owned: u.owned
+                    }))
+                };
+                localStorage.setItem('diamondClickerSave', JSON.stringify(gameData));
+            }
+
+            loadGame() {
+                const savedData = localStorage.getItem('diamondClickerSave');
+                if (!savedData) return;
+
+                try {
+                    const gameData = JSON.parse(savedData);
+                    this.diamonds = gameData.diamonds || 0;
+                    this.diamondsPerClick = gameData.diamondsPerClick || 1;
+
+                    if (gameData.upgrades) {
+                        gameData.upgrades.forEach(savedUpgrade => {
+                            const upgrade = this.upgrades.find(u => u.id === savedUpgrade.id);
+                            if (upgrade) {
+                                upgrade.cost = savedUpgrade.cost;
+                                upgrade.owned = savedUpgrade.owned;
+                            }
+                        });
+                    }
+                } catch (error) {
+                    console.warn('Failed to load saved game data:', error);
+                }
+            }
+
+            resetGame() {
+                if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
+                    this.diamonds = 0;
+                    this.diamondsPerClick = 1;
+
+                    this.upgrades.forEach(upgrade => {
+                        upgrade.cost = upgrade.baseCost;
+                        upgrade.owned = 0;
+                    });
+
+                    localStorage.removeItem('diamondClickerSave');
+                    this.updateDisplay();
+                    this.renderUpgrades();
+                }
+            }
+        }
+
+        // Island Adventure Game Class
+        class IslandAdventureGame {
+            constructor() {
+                // Canvas and context
+                this.canvas = document.getElementById('adventure-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.minimap = document.getElementById('minimap-canvas');
+                this.minimapCtx = this.minimap.getContext('2d');
+
+                // Game state
+                this.gameState = 'menu'; // menu, sailing, island, paused, gameOver
+                this.isRunning = false;
+                this.lastTime = 0;
+
+                // Player properties
+                this.player = {
+                    x: 400, y: 250, // Center of canvas
+                    boatX: 400, boatY: 250, // Boat position
+                    angle: 0,
+                    speed: 0,
+                    maxSpeed: 3,
+                    health: 100,
+                    maxHealth: 100,
+                    score: 0,
+                    zombiesKilled: 0,
+                    islandsExplored: 0,
+                    swordSwinging: false,
+                    swordAngle: 0,
+                    lastAttack: 0
+                };
+
+                // World properties
+                this.world = {
+                    width: 2000,
+                    height: 2000,
+                    waterColor: '#4682b4'
+                };
+
+                // Camera for 3D-like perspective
+                this.camera = {
+                    x: 0, y: 0,
+                    zoom: 1,
+                    targetX: 0, targetY: 0
+                };
+
+                // Islands
+                this.islands = [];
+                this.currentIsland = null;
+
+                // Zombies
+                this.zombies = [];
+
+                // Input handling
+                this.keys = {};
+                this.touch = {
+                    active: false,
+                    startX: 0, startY: 0,
+                    currentX: 0, currentY: 0
+                };
+
+                // UI elements
+                this.elements = {
+                    healthFill: document.getElementById('health-fill'),
+                    healthText: document.getElementById('health-text'),
+                    score: document.getElementById('adventure-score'),
+                    zombiesKilled: document.getElementById('zombies-killed'),
+                    islandsExplored: document.getElementById('islands-explored'),
+                    modeIndicator: document.getElementById('game-mode-indicator'),
+                    dockBtn: document.getElementById('dock-undock-btn'),
+                    statusMessage: document.getElementById('status-message'),
+                    gameStatus: document.getElementById('game-status')
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.generateIslands();
+                this.updateUI();
+                this.render();
+            }
+
+            setupEventListeners() {
+                // Button controls
+                document.getElementById('new-adventure-btn').addEventListener('click', () => this.startNewGame());
+                document.getElementById('pause-adventure-btn').addEventListener('click', () => this.togglePause());
+                document.getElementById('dock-undock-btn').addEventListener('click', () => this.toggleDocking());
+                document.getElementById('reset-adventure-btn').addEventListener('click', () => this.resetGame());
+                document.getElementById('help-adventure-btn').addEventListener('click', () => this.showHelp());
+
+                // Keyboard controls
+                document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                document.addEventListener('keyup', (e) => this.handleKeyUp(e));
+
+                // Mouse controls
+                this.canvas.addEventListener('click', (e) => this.handleClick(e));
+                this.canvas.addEventListener('mousedown', (e) => this.handleMouseDown(e));
+
+                // Touch controls
+                this.setupTouchControls();
+
+                // Prevent context menu on canvas
+                this.canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+            }
+
+            setupTouchControls() {
+                const joystick = document.getElementById('touch-joystick');
+                const knob = document.getElementById('joystick-knob');
+                const attackBtn = document.getElementById('touch-attack-btn');
+                const dockBtn = document.getElementById('touch-dock-btn');
+
+                // Virtual joystick
+                let joystickActive = false;
+                const joystickCenter = { x: 50, y: 50 };
+
+                joystick.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    joystickActive = true;
+                });
+
+                joystick.addEventListener('touchmove', (e) => {
+                    if (!joystickActive) return;
+                    e.preventDefault();
+
+                    const rect = joystick.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    const x = touch.clientX - rect.left - joystickCenter.x;
+                    const y = touch.clientY - rect.top - joystickCenter.y;
+
+                    const distance = Math.sqrt(x * x + y * y);
+                    const maxDistance = 30;
+
+                    if (distance <= maxDistance) {
+                        knob.style.transform = `translate(${x}px, ${y}px)`;
+                        this.touch.currentX = x / maxDistance;
+                        this.touch.currentY = y / maxDistance;
+                    } else {
+                        const angle = Math.atan2(y, x);
+                        const limitedX = Math.cos(angle) * maxDistance;
+                        const limitedY = Math.sin(angle) * maxDistance;
+                        knob.style.transform = `translate(${limitedX}px, ${limitedY}px)`;
+                        this.touch.currentX = limitedX / maxDistance;
+                        this.touch.currentY = limitedY / maxDistance;
+                    }
+                    this.touch.active = true;
+                });
+
+                joystick.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    joystickActive = false;
+                    knob.style.transform = 'translate(0px, 0px)';
+                    this.touch.active = false;
+                    this.touch.currentX = 0;
+                    this.touch.currentY = 0;
+                });
+
+                // Attack button
+                attackBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    this.handleAttack();
+                });
+
+                // Dock button
+                dockBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    this.toggleDocking();
+                });
+            }
+
+            handleKeyDown(e) {
+                this.keys[e.code] = true;
+
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    this.handleAttack();
+                }
+            }
+
+            handleKeyUp(e) {
+                this.keys[e.code] = false;
+            }
+
+            handleClick(e) {
+                if (this.gameState === 'island') {
+                    this.handleAttack();
+                }
+            }
+
+            handleMouseDown(e) {
+                // Handle mouse down for future features
+            }
+
+            handleAttack() {
+                if (this.gameState !== 'island') return;
+
+                const now = Date.now();
+                if (now - this.player.lastAttack < 300) return; // Attack cooldown
+
+                this.player.swordSwinging = true;
+                this.player.lastAttack = now;
+
+                // Check for zombie hits
+                this.checkSwordHits();
+
+                setTimeout(() => {
+                    this.player.swordSwinging = false;
+                }, 300);
+            }
+
+            checkSwordHits() {
+                const attackRange = 50;
+                const hitZombies = [];
+
+                this.zombies.forEach((zombie, index) => {
+                    const dx = zombie.x - this.player.x;
+                    const dy = zombie.y - this.player.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance <= attackRange) {
+                        hitZombies.push(index);
+                        // Add hit effect
+                        zombie.hitEffect = true;
+                        setTimeout(() => zombie.hitEffect = false, 200);
+                    }
+                });
+
+                // Remove hit zombies and update score
+                hitZombies.reverse().forEach(index => {
+                    this.zombies.splice(index, 1);
+                    this.player.zombiesKilled++;
+                    this.player.score += 10;
+                });
+
+                this.updateUI();
+            }
+
+            generateIslands() {
+                this.islands = [];
+                const numIslands = 5;
+
+                for (let i = 0; i < numIslands; i++) {
+                    const angle = (i / numIslands) * Math.PI * 2;
+                    const distance = 300 + Math.random() * 400;
+                    const x = this.world.width / 2 + Math.cos(angle) * distance;
+                    const y = this.world.height / 2 + Math.sin(angle) * distance;
+
+                    const islandRadius = 140 + Math.random() * 80; // Increased from 80-120 to 140-220
+                    const island = {
+                        x: x,
+                        y: y,
+                        radius: islandRadius,
+                        color: '#8b7355',
+                        explored: false,
+                        zombieCount: 6 + Math.floor(Math.random() * 8), // Increased from 2-6 to 6-14 zombies
+                        trees: this.generateTrees(x, y, islandRadius)
+                    };
+
+                    this.islands.push(island);
+                }
+            }
+
+            generateTrees(islandX, islandY, islandRadius) {
+                const trees = [];
+                const numTrees = 6 + Math.floor(Math.random() * 8); // Increased from 3-8 to 6-14 trees
+
+                for (let i = 0; i < numTrees; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * (islandRadius - 20);
+                    trees.push({
+                        x: islandX + Math.cos(angle) * distance,
+                        y: islandY + Math.sin(angle) * distance,
+                        size: 15 + Math.random() * 10
+                    });
+                }
+
+                return trees;
+            }
+
+            spawnZombiesOnIsland(island) {
+                this.zombies = [];
+                for (let i = 0; i < island.zombieCount; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * (island.radius - 30);
+                    const zombie = {
+                        x: island.x + Math.cos(angle) * distance,
+                        y: island.y + Math.sin(angle) * distance,
+                        angle: Math.random() * Math.PI * 2,
+                        speed: 0.5 + Math.random() * 0.5,
+                        health: 1,
+                        lastDirectionChange: Date.now(),
+                        hitEffect: false,
+                        lastAttack: 0,
+                        attacking: false,
+                        island: island
+                    };
+                    this.zombies.push(zombie);
+                }
+            }
+
+            startNewGame() {
+                this.gameState = 'sailing';
+                this.isRunning = true;
+                this.player.health = this.player.maxHealth;
+                this.player.score = 0;
+                this.player.zombiesKilled = 0;
+                this.player.islandsExplored = 0;
+                this.player.x = this.player.boatX = this.world.width / 2;
+                this.player.y = this.player.boatY = this.world.height / 2;
+                this.currentIsland = null;
+                this.zombies = [];
+
+                // Reset islands
+                this.islands.forEach(island => island.explored = false);
+
+                this.updateUI();
+                this.updateModeIndicator();
+                this.gameLoop();
+
+                // Show status
+                this.showStatus("Adventure started! Use WASD to sail your boat.");
+            }
+
+            togglePause() {
+                if (this.gameState === 'paused') {
+                    this.gameState = this.previousState;
+                    this.isRunning = true;
+                    this.gameLoop();
+                    document.getElementById('pause-adventure-btn').textContent = '⏸️ Pause';
+                    this.showStatus("Game resumed!");
+                } else if (this.isRunning) {
+                    this.previousState = this.gameState;
+                    this.gameState = 'paused';
+                    this.isRunning = false;
+                    document.getElementById('pause-adventure-btn').textContent = '▶️ Resume';
+                    this.showStatus("Game paused.");
+                }
+            }
+
+            toggleDocking() {
+                if (this.gameState === 'sailing') {
+                    // Check if near an island
+                    const nearIsland = this.getNearestIsland();
+                    if (nearIsland && this.getDistanceToIsland(nearIsland) < 100) {
+                        this.dockAtIsland(nearIsland);
+                    }
+                } else if (this.gameState === 'island') {
+                    this.undockFromIsland();
+                }
+            }
+
+            dockAtIsland(island) {
+                this.gameState = 'island';
+                this.currentIsland = island;
+                this.player.x = island.x;
+                this.player.y = island.y;
+
+                if (!island.explored) {
+                    island.explored = true;
+                    this.player.islandsExplored++;
+                    this.spawnZombiesOnIsland(island);
+                    this.showStatus(`Docked at island! ${island.zombieCount} zombies spotted. Use Space to attack!`);
+                } else {
+                    this.showStatus("Docked at explored island. All zombies cleared!");
+                }
+
+                this.updateModeIndicator();
+                this.updateUI();
+            }
+
+            undockFromIsland() {
+                this.gameState = 'sailing';
+                this.player.x = this.player.boatX;
+                this.player.y = this.player.boatY;
+                this.currentIsland = null;
+                this.zombies = [];
+
+                this.updateModeIndicator();
+                this.showStatus("Back on the boat! Sail to find more islands.");
+            }
+
+            getNearestIsland() {
+                let nearest = null;
+                let minDistance = Infinity;
+
+                this.islands.forEach(island => {
+                    const distance = this.getDistanceToIsland(island);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        nearest = island;
+                    }
+                });
+
+                return nearest;
+            }
+
+            getDistanceToIsland(island) {
+                const dx = island.x - this.player.boatX;
+                const dy = island.y - this.player.boatY;
+                return Math.sqrt(dx * dx + dy * dy) - island.radius;
+            }
+
+            resetGame() {
+                if (confirm('Are you sure you want to reset your adventure? All progress will be lost!')) {
+                    this.gameState = 'menu';
+                    this.isRunning = false;
+                    this.player.health = this.player.maxHealth;
+                    this.player.score = 0;
+                    this.player.zombiesKilled = 0;
+                    this.player.islandsExplored = 0;
+                    this.currentIsland = null;
+                    this.zombies = [];
+                    this.generateIslands();
+                    this.updateUI();
+                    this.updateModeIndicator();
+                    this.showStatus("Game reset. Click 'New Adventure' to start!");
+                }
+            }
+
+            showHelp() {
+                alert(`🏝️ Island Adventure Help
+
+🎮 Controls:
+• WASD/Arrow Keys: Move boat or player
+• Space/Click: Attack with sword (on islands)
+• Dock Button: Dock at nearby islands
+
+🎯 Objective:
+• Sail to mysterious islands
+• Explore and fight zombies
+• Survive and score points
+
+⚔️ Combat:
+• Get close to zombies and attack
+• Each zombie killed = 10 points
+• Watch your health!
+
+🏝️ Islands:
+• Dock near islands to explore
+• Each island has 2-6 zombies
+• Cleared islands are safe
+
+Good luck, adventurer!`);
+            }
+
+            showStatus(message) {
+                this.elements.statusMessage.textContent = message;
+                this.elements.gameStatus.style.display = 'block';
+
+                setTimeout(() => {
+                    this.elements.gameStatus.style.display = 'none';
+                }, 3000);
+            }
+
+            updateModeIndicator() {
+                const indicator = this.elements.modeIndicator;
+                const dockBtn = this.elements.dockBtn;
+
+                switch(this.gameState) {
+                    case 'sailing':
+                        indicator.textContent = '⛵ Sailing Mode';
+                        this.canvas.className = 'adventure-canvas boat-mode';
+
+                        const nearIsland = this.getNearestIsland();
+                        if (nearIsland && this.getDistanceToIsland(nearIsland) < 100) {
+                            dockBtn.textContent = '🏝️ Dock at Island';
+                            dockBtn.disabled = false;
+                        } else {
+                            dockBtn.textContent = '🏝️ Find Island';
+                            dockBtn.disabled = true;
+                        }
+                        break;
+                    case 'island':
+                        indicator.textContent = '🏝️ Island Mode';
+                        this.canvas.className = 'adventure-canvas';
+                        dockBtn.textContent = '⛵ Return to Boat';
+                        dockBtn.disabled = false;
+                        break;
+                    case 'paused':
+                        indicator.textContent = '⏸️ Paused';
+                        dockBtn.disabled = true;
+                        break;
+                    default:
+                        indicator.textContent = '🎮 Ready to Start';
+                        dockBtn.disabled = true;
+                }
+            }
+
+            updateUI() {
+                // Health bar
+                const healthPercent = (this.player.health / this.player.maxHealth) * 100;
+                this.elements.healthFill.style.width = healthPercent + '%';
+                this.elements.healthText.textContent = `${this.player.health}/${this.player.maxHealth}`;
+
+                // Stats
+                this.elements.score.textContent = this.player.score;
+                this.elements.zombiesKilled.textContent = this.player.zombiesKilled;
+                this.elements.islandsExplored.textContent = this.player.islandsExplored;
+            }
+
+            update(deltaTime) {
+                if (!this.isRunning || this.gameState === 'paused') return;
+
+                this.updatePlayer(deltaTime);
+                this.updateZombies(deltaTime);
+                this.updateCamera();
+                this.updateModeIndicator();
+            }
+
+            updatePlayer(deltaTime) {
+                let moveX = 0, moveY = 0;
+
+                // Keyboard input
+                if (this.keys['KeyW'] || this.keys['ArrowUp']) moveY = -1;
+                if (this.keys['KeyS'] || this.keys['ArrowDown']) moveY = 1;
+                if (this.keys['KeyA'] || this.keys['ArrowLeft']) moveX = -1;
+                if (this.keys['KeyD'] || this.keys['ArrowRight']) moveX = 1;
+
+                // Touch input
+                if (this.touch.active) {
+                    moveX = this.touch.currentX;
+                    moveY = this.touch.currentY;
+                }
+
+                // Normalize diagonal movement
+                if (moveX !== 0 && moveY !== 0) {
+                    const length = Math.sqrt(moveX * moveX + moveY * moveY);
+                    moveX /= length;
+                    moveY /= length;
+                }
+
+                const speed = this.gameState === 'sailing' ? this.player.maxSpeed : this.player.maxSpeed * 0.7;
+
+                if (this.gameState === 'sailing') {
+                    // Update boat position
+                    this.player.boatX += moveX * speed;
+                    this.player.boatY += moveY * speed;
+
+                    // Keep boat in world bounds
+                    this.player.boatX = Math.max(50, Math.min(this.world.width - 50, this.player.boatX));
+                    this.player.boatY = Math.max(50, Math.min(this.world.height - 50, this.player.boatY));
+
+                    this.player.x = this.player.boatX;
+                    this.player.y = this.player.boatY;
+
+                    // Update boat angle
+                    if (moveX !== 0 || moveY !== 0) {
+                        this.player.angle = Math.atan2(moveY, moveX);
+                    }
+                } else if (this.gameState === 'island' && this.currentIsland) {
+                    // Update player position on island
+                    const newX = this.player.x + moveX * speed;
+                    const newY = this.player.y + moveY * speed;
+
+                    // Keep player on island
+                    const dx = newX - this.currentIsland.x;
+                    const dy = newY - this.currentIsland.y;
+                    const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distanceFromCenter <= this.currentIsland.radius - 15) {
+                        this.player.x = newX;
+                        this.player.y = newY;
+                    }
+
+                    // Update player angle
+                    if (moveX !== 0 || moveY !== 0) {
+                        this.player.angle = Math.atan2(moveY, moveX);
+                    }
+                }
+            }
+
+            updateZombies(deltaTime) {
+                if (this.gameState !== 'island') return;
+
+                this.zombies.forEach(zombie => {
+                    // Simple AI: move towards player occasionally
+                    const now = Date.now();
+                    if (now - zombie.lastDirectionChange > 2000) {
+                        const dx = this.player.x - zombie.x;
+                        const dy = this.player.y - zombie.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 100) {
+                            // Move towards player
+                            zombie.angle = Math.atan2(dy, dx);
+                        } else {
+                            // Random movement
+                            zombie.angle = Math.random() * Math.PI * 2;
+                        }
+
+                        zombie.lastDirectionChange = now;
+                    }
+
+                    // Move zombie
+                    const moveX = Math.cos(zombie.angle) * zombie.speed;
+                    const moveY = Math.sin(zombie.angle) * zombie.speed;
+
+                    zombie.x += moveX;
+                    zombie.y += moveY;
+
+                    // Keep zombie on island
+                    const dx = zombie.x - zombie.island.x;
+                    const dy = zombie.y - zombie.island.y;
+                    const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distanceFromCenter > zombie.island.radius - 20) {
+                        zombie.x -= moveX * 2;
+                        zombie.y -= moveY * 2;
+                        zombie.angle += Math.PI; // Turn around
+                    }
+
+                    // Check collision with player for zombie attacks
+                    const playerDx = zombie.x - this.player.x;
+                    const playerDy = zombie.y - this.player.y;
+                    const playerDistance = Math.sqrt(playerDx * playerDx + playerDy * playerDy);
+
+                    // Zombie attack logic - only attack every 1 second when close
+                    if (playerDistance < 25) {
+                        const now = Date.now();
+                        if (!zombie.lastAttack || now - zombie.lastAttack > 1000) {
+                            this.damagePlayer(10);
+                            zombie.lastAttack = now;
+                            // Visual feedback for zombie attack
+                            zombie.attacking = true;
+                            setTimeout(() => zombie.attacking = false, 300);
+                        }
+                    }
+                });
+            }
+
+            damagePlayer(damage) {
+                this.player.health = Math.max(0, this.player.health - damage);
+                this.updateUI();
+
+                // Flash effect
+                this.canvas.style.animation = 'damageFlash 0.3s ease-in-out';
+                setTimeout(() => {
+                    this.canvas.style.animation = '';
+                }, 300);
+
+                if (this.player.health <= 0) {
+                    this.gameOver();
+                }
+            }
+
+            gameOver() {
+                this.gameState = 'gameOver';
+                this.isRunning = false;
+                alert(`Game Over!
+
+Final Score: ${this.player.score}
+Zombies Killed: ${this.player.zombiesKilled}
+Islands Explored: ${this.player.islandsExplored}
+
+Click "New Adventure" to try again!`);
+            }
+
+            updateCamera() {
+                // Smooth camera following
+                this.camera.targetX = this.player.x - this.canvas.width / 2;
+                this.camera.targetY = this.player.y - this.canvas.height / 2;
+
+                this.camera.x += (this.camera.targetX - this.camera.x) * 0.1;
+                this.camera.y += (this.camera.targetY - this.camera.y) * 0.1;
+
+                // Keep camera in world bounds
+                this.camera.x = Math.max(0, Math.min(this.world.width - this.canvas.width, this.camera.x));
+                this.camera.y = Math.max(0, Math.min(this.world.height - this.canvas.height, this.camera.y));
+            }
+
+            render() {
+                this.renderMainCanvas();
+                this.renderMinimap();
+            }
+
+            renderMainCanvas() {
+                const ctx = this.ctx;
+                ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Save context for camera transform
+                ctx.save();
+                ctx.translate(-this.camera.x, -this.camera.y);
+
+                // Draw water background
+                ctx.fillStyle = this.world.waterColor;
+                ctx.fillRect(this.camera.x, this.camera.y, this.canvas.width, this.canvas.height);
+
+                // Draw water pattern
+                this.drawWaterPattern();
+
+                // Draw islands
+                this.islands.forEach(island => this.drawIsland(island));
+
+                // Draw boat (only in sailing mode)
+                if (this.gameState === 'sailing') {
+                    this.drawBoat();
+                }
+
+                // Draw player (only in island mode)
+                if (this.gameState === 'island') {
+                    this.drawPlayer();
+                }
+
+                // Draw zombies
+                this.zombies.forEach(zombie => this.drawZombie(zombie));
+
+                ctx.restore();
+
+                // Draw UI elements that don't move with camera
+                if (this.gameState === 'paused') {
+                    this.drawPauseOverlay();
+                }
+            }
+
+            drawWaterPattern() {
+                const ctx = this.ctx;
+                const time = Date.now() * 0.001;
+
+                // Simple wave pattern
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.lineWidth = 1;
+
+                for (let x = this.camera.x - 50; x < this.camera.x + this.canvas.width + 50; x += 30) {
+                    for (let y = this.camera.y - 50; y < this.camera.y + this.canvas.height + 50; y += 30) {
+                        const wave = Math.sin(time + x * 0.01) * 5;
+                        ctx.beginPath();
+                        ctx.moveTo(x, y + wave);
+                        ctx.lineTo(x + 15, y + wave);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            drawIsland(island) {
+                const ctx = this.ctx;
+
+                // Island base
+                ctx.fillStyle = island.color;
+                ctx.beginPath();
+                ctx.arc(island.x, island.y, island.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Island border
+                ctx.strokeStyle = '#654321';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Trees
+                island.trees.forEach(tree => {
+                    // Tree trunk
+                    ctx.fillStyle = '#8b4513';
+                    ctx.fillRect(tree.x - 3, tree.y - 3, 6, tree.size * 0.6);
+
+                    // Tree top
+                    ctx.fillStyle = '#228b22';
+                    ctx.beginPath();
+                    ctx.arc(tree.x, tree.y - tree.size * 0.3, tree.size * 0.4, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Exploration indicator
+                if (island.explored) {
+                    ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
+                    ctx.beginPath();
+                    ctx.arc(island.x, island.y, island.radius + 5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            drawBoat() {
+                const ctx = this.ctx;
+                const x = this.player.x;
+                const y = this.player.y;
+
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(this.player.angle);
+
+                // Boat body
+                ctx.fillStyle = '#8b4513';
+                ctx.fillRect(-20, -8, 40, 16);
+
+                // Boat outline
+                ctx.strokeStyle = '#654321';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(-20, -8, 40, 16);
+
+                // Mast
+                ctx.strokeStyle = '#654321';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(0, -8);
+                ctx.lineTo(0, -30);
+                ctx.stroke();
+
+                // Sail
+                ctx.fillStyle = '#f5f5dc';
+                ctx.fillRect(-15, -30, 30, 20);
+                ctx.strokeStyle = '#ddd';
+                ctx.strokeRect(-15, -30, 30, 20);
+
+                ctx.restore();
+            }
+
+            drawPlayer() {
+                const ctx = this.ctx;
+                const x = this.player.x;
+                const y = this.player.y;
+
+                ctx.save();
+                ctx.translate(x, y);
+
+                // Player body
+                ctx.fillStyle = '#ff6b6b';
+                ctx.beginPath();
+                ctx.arc(0, 0, 12, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Player outline
+                ctx.strokeStyle = '#d63031';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Sword
+                if (this.player.swordSwinging) {
+                    ctx.rotate(this.player.angle + Math.PI / 4);
+                    ctx.strokeStyle = '#c0c0c0';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(15, 0);
+                    ctx.lineTo(35, 0);
+                    ctx.stroke();
+
+                    // Sword handle
+                    ctx.strokeStyle = '#8b4513';
+                    ctx.lineWidth = 5;
+                    ctx.beginPath();
+                    ctx.moveTo(10, 0);
+                    ctx.lineTo(15, 0);
+                    ctx.stroke();
+                } else {
+                    // Sword at rest
+                    ctx.rotate(this.player.angle);
+                    ctx.strokeStyle = '#c0c0c0';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(15, -5);
+                    ctx.lineTo(25, -5);
+                    ctx.stroke();
+                }
+
+                ctx.restore();
+            }
+
+            drawZombie(zombie) {
+                const ctx = this.ctx;
+
+                ctx.save();
+                ctx.translate(zombie.x, zombie.y);
+
+                if (zombie.hitEffect) {
+                    ctx.scale(1.2, 1.2);
+                }
+
+                if (zombie.attacking) {
+                    ctx.scale(1.1, 1.1);
+                }
+
+                // Zombie body
+                ctx.fillStyle = zombie.hitEffect ? '#ff0000' : (zombie.attacking ? '#ff6600' : '#90ee90');
+                ctx.beginPath();
+                ctx.arc(0, 0, 10, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Zombie outline
+                ctx.strokeStyle = '#006400';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Zombie eyes
+                ctx.fillStyle = '#ff0000';
+                ctx.fillRect(-5, -3, 2, 2);
+                ctx.fillRect(3, -3, 2, 2);
+
+                ctx.restore();
+            }
+
+            drawPauseOverlay() {
+                const ctx = this.ctx;
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '48px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('PAUSED', this.canvas.width / 2, this.canvas.height / 2);
+            }
+
+            renderMinimap() {
+                const ctx = this.minimapCtx;
+                const scale = 0.075; // Scale factor for minimap
+
+                ctx.clearRect(0, 0, this.minimap.width, this.minimap.height);
+
+                // Draw water background
+                ctx.fillStyle = this.world.waterColor;
+                ctx.fillRect(0, 0, this.minimap.width, this.minimap.height);
+
+                // Draw islands
+                this.islands.forEach(island => {
+                    const x = island.x * scale;
+                    const y = island.y * scale;
+                    const radius = island.radius * scale;
+
+                    ctx.fillStyle = island.explored ? '#90EE90' : island.color;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.strokeStyle = '#654321';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+
+                // Draw player/boat
+                const playerX = this.player.x * scale;
+                const playerY = this.player.y * scale;
+
+                if (this.gameState === 'sailing') {
+                    // Draw boat
+                    ctx.fillStyle = '#ff6b6b';
+                    ctx.fillRect(playerX - 3, playerY - 3, 6, 6);
+                } else if (this.gameState === 'island') {
+                    // Draw player
+                    ctx.fillStyle = '#ff6b6b';
+                    ctx.beginPath();
+                    ctx.arc(playerX, playerY, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Draw view area
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(
+                    this.camera.x * scale,
+                    this.camera.y * scale,
+                    this.canvas.width * scale,
+                    this.canvas.height * scale
+                );
+            }
+
+            gameLoop(currentTime = 0) {
+                if (!this.isRunning) return;
+
+                const deltaTime = currentTime - this.lastTime;
+                this.lastTime = currentTime;
+
+                this.update(deltaTime);
+                this.render();
+
+                requestAnimationFrame((time) => this.gameLoop(time));
+            }
+        }
+    </script>
+</body>
+</html>
