@@ -106,12 +106,12 @@ Three fully-functional browser games:
 ---
 
 ### 2. AI ChatBox
-**Description**: An intelligent AI-powered chatbot built with Streamlit and Groq API. Features real-time conversation, context awareness, and deployed to the cloud with CI/CD. Perfect for students seeking instant help with homework, explanations, and learning support across various subjects.
+**Description**: An intelligent AI-powered chatbot built with Streamlit and Google Gemini API. Features real-time conversation, context awareness, and deployed to the cloud with CI/CD. Perfect for students seeking instant help with homework, explanations, and learning support across various subjects.
 
 **Tech Stack**:
 - Python
 - Streamlit
-- Groq API
+- Gemini 1.5 Flash API
 - Git
 - Streamlit Cloud
 
@@ -248,7 +248,7 @@ Three fully-functional browser games:
 - **JavaScript**: Yellow (`#f0db4f` → `#f7df1e`)
 - **Python**: Blue-Yellow (`#3776ab` → `#ffd343`)
 - **Streamlit**: Red (`#ff4b4b` → `#ff6b6b`)
-- **Groq API**: Purple (`#8b5cf6` → `#a78bfa`)
+- **Gemini API**: Purple (`#8b5cf6` → `#a78bfa`)
 - **Git**: Red-Orange (`#f05032` → `#e84e31`)
 - **Cloud**: Pink (`#ec4899` → `#f472b6`)
 - **Responsive**: Cyan (`#61dafb` → `#21a1c4`)
