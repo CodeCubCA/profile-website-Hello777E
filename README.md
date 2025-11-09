@@ -111,7 +111,7 @@ Three fully-functional browser games:
 **Tech Stack**:
 - Python
 - Streamlit
-- Gemini 1.5 Flash API
+- Gemini 2.5 Flash API
 - Git
 - Streamlit Cloud
 
