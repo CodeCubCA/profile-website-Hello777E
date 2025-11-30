@@ -1,6 +1,6 @@
 # Eric's Personal Portfolio Website
 
-A stunning interactive portfolio featuring glassmorphism design with a vibrant purple gradient theme. This single-page application showcases personal information, projects, and includes three custom-built browser games with real-time gameplay and smooth animations.
+A stunning interactive portfolio featuring glassmorphism design with an elegant warm beige gradient theme. This single-page application showcases personal information, projects, and includes three custom-built browser games with real-time gameplay and smooth animations.
 
 ## Live Demo
 
@@ -89,7 +89,7 @@ Three fully-functional browser games:
 ## Projects Showcase
 
 ### 1. Personal Portfolio Website
-**Description**: A stunning interactive portfolio featuring glassmorphism design with a vibrant purple gradient theme. Showcases personal information, hobbies, and includes three custom-built browser games: Memory Match, Diamond Clicker, and Island Adventure with real-time gameplay and smooth animations.
+**Description**: A stunning interactive portfolio featuring glassmorphism design with an elegant warm beige gradient theme. Showcases personal information, hobbies, and includes three custom-built browser games: Memory Match, Diamond Clicker, and Island Adventure with real-time gameplay and smooth animations.
 
 **Tech Stack**:
 - HTML5
@@ -254,26 +254,26 @@ Three fully-functional browser games:
 ## Design Highlights
 
 ### Color Scheme
-- **Primary Gradient**: `#667eea` → `#764ba2` (Purple to Violet)
-- **Accent Color**: `#ffd700` (Gold)
-- **Text Colors**: White with varying opacity (100%, 85%, 70%)
-- **Glass Effects**: Semi-transparent white overlays
+- **Primary Gradient**: `#d4a574` → `#c19a6b` (Warm Beige to Medium Tan)
+- **Accent Color**: `#8b6f47` (Dark Brown)
+- **Text Colors**: Dark brown (`#3d2f1f`) with varying opacity (100%, 85%, 70%)
+- **Glass Effects**: Semi-transparent cream/beige overlays
 
 ### Tech Badge Gradients
-- **HTML5**: Orange (`#e34c26` → `#f06529`)
-- **CSS3**: Blue (`#264de4` → `#2965f1`)
-- **JavaScript**: Yellow (`#f0db4f` → `#f7df1e`)
-- **Python**: Blue-Yellow (`#3776ab` → `#ffd343`)
-- **Streamlit**: Red (`#ff4b4b` → `#ff6b6b`)
-- **Gemini API**: Purple (`#8b5cf6` → `#a78bfa`)
-- **AI**: Teal (`#14b8a6` → `#0d9488`)
-- **Voice**: Blue (`#3b82f6` → `#2563eb`)
-- **gTTS**: Purple (`#9333ea` → `#7e22ce`)
-- **Render**: Purple-Pink (`#a855f7` → `#ec4899`)
-- **Git**: Red-Orange (`#f05032` → `#e84e31`)
-- **Cloud**: Pink (`#ec4899` → `#f472b6`)
-- **Responsive**: Cyan (`#61dafb` → `#21a1c4`)
-- **Glassmorphism**: Translucent white with blur
+- **HTML5**: Light Beige (`#c19a6b` → `#a67c52`)
+- **CSS3**: Medium Brown (`#a67c52` → `#8b6f47`)
+- **JavaScript**: Warm Beige (`#d4a574` → `#c19a6b`)
+- **Python**: Warm Brown (`#9d8159` → `#8b6f47`)
+- **Streamlit**: Medium Beige (`#b8936b` → `#9d8159`)
+- **Gemini API**: Brown (`#a67c52` → `#8b6f47`)
+- **AI**: Dark Brown (`#8b6f47` → `#6e5538`)
+- **Voice**: Brown (`#a67c52` → `#8b6f47`)
+- **gTTS**: Warm Brown (`#9d8159` → `#8b6f47`)
+- **Render**: Muted Brown (`#a0755c` → `#8b6f47`)
+- **Git**: Muted Brown (`#a0755c` → `#8b6f47`)
+- **Cloud**: Light Beige (`#c19a6b` → `#a67c52`)
+- **Responsive**: Medium Beige (`#b8936b` → `#a67c52`)
+- **Glassmorphism**: Translucent cream with brown border
 
 ### Spacing System
 - **XS**: 0.5rem
