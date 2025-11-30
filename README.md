@@ -67,7 +67,7 @@ A stunning interactive portfolio featuring glassmorphism design with a vibrant p
 - Listening to music and discovering new artists
 
 ### 4. My Projects
-Showcases two major projects with:
+Showcases three major projects with:
 - Project screenshots with gradient backgrounds
 - Detailed descriptions
 - Technology stack badges
@@ -118,6 +118,23 @@ Three fully-functional browser games:
 **Links**:
 - [Repository](https://github.com/CodeCubCA/ai-chatbox-Hello777E)
 - [Live Demo](https://ai-chatbox-eric-codecub.streamlit.app)
+
+---
+
+### 3. Voice AI Assistant 🎤
+**Description**: An intelligent voice-enabled chatbot powered by Google Gemini API. Features real-time speech-to-text input, natural text-to-speech output, and seamless AI conversations. Includes multiple personality modes (Friendly, Professional, Creative) and customizable voice settings. Built as part of the AI with Python course at CodeCub.
+
+**Tech Stack**:
+- Python
+- Streamlit
+- AI (Gemini API)
+- Voice Recognition
+- gTTS (Google Text-to-Speech)
+- Render
+
+**Links**:
+- [Repository](https://github.com/CodeCubCA/voice-ai-assistant-Hello777E)
+- [Live Demo](https://voice-ai-assistant-bfwb.onrender.com/)
 
 ---
 
@@ -249,6 +266,10 @@ Three fully-functional browser games:
 - **Python**: Blue-Yellow (`#3776ab` → `#ffd343`)
 - **Streamlit**: Red (`#ff4b4b` → `#ff6b6b`)
 - **Gemini API**: Purple (`#8b5cf6` → `#a78bfa`)
+- **AI**: Teal (`#14b8a6` → `#0d9488`)
+- **Voice**: Blue (`#3b82f6` → `#2563eb`)
+- **gTTS**: Purple (`#9333ea` → `#7e22ce`)
+- **Render**: Purple-Pink (`#a855f7` → `#ec4899`)
 - **Git**: Red-Orange (`#f05032` → `#e84e31`)
 - **Cloud**: Pink (`#ec4899` → `#f472b6`)
 - **Responsive**: Cyan (`#61dafb` → `#21a1c4`)
@@ -292,7 +313,8 @@ profile-website/
 ├── .gitignore              # Git ignore rules
 └── img/
     ├── profile.png         # Portfolio website screenshot
-    └── chatbox.png         # AI ChatBox screenshot
+    ├── chatbox.png         # AI ChatBox screenshot
+    └── Voice AI.png        # Voice AI Assistant screenshot
 ```
 
 **Note**: This is a single-page application with all HTML, CSS, and JavaScript embedded in one optimized file. No build process or external dependencies required.
