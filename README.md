@@ -67,7 +67,7 @@ A stunning interactive portfolio featuring glassmorphism design with an elegant 
 - Listening to music and discovering new artists
 
 ### 4. My Projects
-Showcases three major projects with:
+Showcases four major projects with:
 - Project screenshots with gradient backgrounds
 - Detailed descriptions
 - Technology stack badges
@@ -135,6 +135,28 @@ Three fully-functional browser games:
 **Links**:
 - [Repository](https://github.com/CodeCubCA/voice-ai-assistant-Hello777E)
 - [Live Demo](https://voice-ai-assistant-bfwb.onrender.com/)
+
+---
+
+### 4. AI Image Generator 🎨
+**Description**: A full-featured web application that uses Stable Diffusion AI to generate images from text prompts. Features multiple style presets, image history gallery, and intuitive controls. Built as part of the AI with Python course at CodeCub.
+
+**Key Features**:
+- 🎨 Text-to-image generation with Stable Diffusion AI
+- 🎭 7 style presets (Anime, Realistic, Digital Art, Watercolor, 3D Render, Sketch, Oil Painting)
+- 🖼️ Image history gallery to track all generated images
+- 💾 Download functionality for saving images
+
+**Tech Stack**:
+- Python
+- Streamlit
+- HuggingFace API
+- Stable Diffusion
+- Pillow (PIL)
+
+**Links**:
+- [Repository](https://github.com/CodeCubCA/ai-image-generator-Hello777E)
+- [Live Demo](https://huggingface.co/spaces/Eric-CodeCub/ai-image-generator)
 
 ---
 
@@ -274,6 +296,9 @@ Three fully-functional browser games:
 - **Cloud**: Light Beige (`#c19a6b` → `#a67c52`)
 - **Responsive**: Medium Beige (`#b8936b` → `#a67c52`)
 - **Glassmorphism**: Translucent cream with brown border
+- **HuggingFace API**: Light Beige (`#d4a574` → `#b8936b`)
+- **Stable Diffusion**: Warm Brown (`#9d8159` → `#8b6f47`)
+- **Pillow**: Brown (`#a67c52` → `#8b6f47`)
 
 ### Spacing System
 - **XS**: 0.5rem
@@ -314,7 +339,8 @@ profile-website/
 └── img/
     ├── profile.png         # Portfolio website screenshot
     ├── chatbox.png         # AI ChatBox screenshot
-    └── Voice AI.png        # Voice AI Assistant screenshot
+    ├── Voice AI.png        # Voice AI Assistant screenshot
+    └── ai-image-generator.png  # AI Image Generator screenshot
 ```
 
 **Note**: This is a single-page application with all HTML, CSS, and JavaScript embedded in one optimized file. No build process or external dependencies required.
@@ -492,4 +518,4 @@ This project is open source and available for educational purposes.
 
 ---
 
-*Last Updated: October 2024*
+*Last Updated: December 2024*
